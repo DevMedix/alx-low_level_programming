@@ -7,17 +7,13 @@
  */
 int main(void)
 {
-	int a = 0;
+	int a, b, c;
 
-	while (a <= 7)
+	for (a = 0; a <= 7; a++)
 	{
-		int b = a + 1;
-
-		while (b <= 8)
+		for (b = a + 1; b <= 8; b++)
 		{
-			int c = b + 1;
-
-			while (c <= 9)
+			for (c = b + 1; c <= 9; c++)
 			{
 				putchar((a % 10) + '0');
 				putchar((b % 10) + '0');
@@ -27,11 +23,8 @@ int main(void)
 					putchar(',');
 					putchar(' ');
 				}
-				c++;
 			}
-			b++;
 		}
-		a++;
 	}
 	putchar('\n');
 	return (0);
