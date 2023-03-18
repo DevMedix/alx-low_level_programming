@@ -8,14 +8,16 @@
 int main(void)
 {
 	int a = 0;
+
 	while (a <= 7)
 	{
 		int b = a + 1;
 
-		while(b <= 8)
+		while (b <= 8)
 		{
 			int c = b + 1;
-			while(c <= 9)
+
+			while (c <= 9)
 			{
 				putchar((a % 10) + '0');
 				putchar((b % 10) + '0');
