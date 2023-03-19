@@ -15,7 +15,7 @@ int main(void)
 		{
 			for (c = 0; c < 10; c++)
 			{
-				for (d = 1; d < 10; d++)
+				for (d = b + 1; d < 10; d++)
 				{
 					putchar((a % 10) + '0');
 					putchar((b % 10) + '0');
@@ -27,6 +27,7 @@ int main(void)
 						putchar(',');
 						putchar(' ');
 					}
+				
 				}
 			}
 		}
