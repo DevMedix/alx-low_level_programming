@@ -7,11 +7,13 @@
  */
 void jack_bauer(void)
 {
-	int a, b;
+	int a = 00;
 
-	for (a = 00; a <= 23; a++)
+	while (a <= 23)
 	{
-		for (b = 00; b <= 59; b++)
+		int b = 00;
+
+		while (b <= 59)
 		{
 			_putchar((a / 10) + '0');
 			_putchar((a % 10) + '0');
@@ -19,6 +21,8 @@ void jack_bauer(void)
 			_putchar((b / 10) + '0');
 			_putchar((b % 10) + '0');
 			_putchar('\n');
+			b++;
 		}
+		a++;
 	}
 }
