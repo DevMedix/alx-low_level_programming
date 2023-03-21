@@ -9,3 +9,4 @@ void jack_bauer(void);
 void times_table(void);
 void print_times_table(int n);
 int _abs(int a);
+int add(int a, int b);
