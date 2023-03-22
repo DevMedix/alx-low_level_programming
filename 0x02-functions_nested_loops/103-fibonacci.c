@@ -1,6 +1,11 @@
 #include "main.h"
 #include <stdio.h>
 
+/**
+ * main - Entry point
+ *
+ * Return: Alays 0
+ */
 int main(void)
 {
 	long int a = 0;
@@ -11,6 +16,7 @@ int main(void)
 	while (a <= limit)
 	{
 		long int c = 4 * b + a;
+
 		if (c > limit)
 			break;
 		a = b;
