@@ -8,8 +8,8 @@
 int main(void)
 {
 	long int a, b, c;
-	b = 1;
 
+	b = 1;
 	for (a = 1; a <= 12586269025; a++)
 	{
 		printf("%ld", a);
