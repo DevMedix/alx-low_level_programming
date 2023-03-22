@@ -7,13 +7,13 @@
  */
 int main(void)
 {
-	int a, b, c;
+	long int a, b, c;
 	b = 1;
 
-	for (a = 1; a <= 50; a++)
+	for (a = 1; a <= 12586269025; a++)
 	{
-		printf("%d", a);
-		if (a < 30)
+		printf("%ld", a);
+		if (a < 12586269025)
 			printf(", ");
 		c = a + b;
 		a = b;
