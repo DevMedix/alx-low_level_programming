@@ -10,14 +10,15 @@ void print_times_table(int n)
 {
 	int a, b, c;
 
-	for (a = 0; a <= n; a++)
+	if (!(n > 15 || n < 0))
 	{
-		for (b = 0; b <= n; b++)
+		for (a = 0; a <= n; a++)
 		{
-			c = a * b;
-			if (!(n > 15 || n < 0))
+			for (b = 0; b <= n; b++)
 			{
-				if (c >= 100 )
+				c = a * b;
+
+				if (c >= 100)
 				{
 					_putchar((c / 100) + '0');
 					_putchar(((c / 10) % 10) + '0');
@@ -44,7 +45,7 @@ void print_times_table(int n)
 					_putchar(' ');
 				}
 			}
+			_putchar('\n');
 		}
-		_putchar('\n');
 	}
 }
