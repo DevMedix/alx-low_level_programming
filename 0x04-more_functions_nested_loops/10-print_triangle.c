@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * print_triangle - draws a traingle
+ * @size: size of the triangle
+ *
+ * Return: void
+ */
 void print_triangle(int size)
 {
 	int a, b, c;
