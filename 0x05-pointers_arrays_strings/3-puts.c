@@ -2,13 +2,10 @@
 
 /**
  * _puts - prints out a string
- * _strlen - gets the length of a string
- * @str: string tp print out
- * @s: string to count
+ * @str: string to print out
  *
- * Return: length
+ * Return: void
  */
-int _strlen(char *s);
 void _puts(char *str)
 {
 	int i, length;
@@ -21,6 +18,12 @@ void _puts(char *str)
 	_putchar('\n');
 }
 
+/**
+ * _strlen - gets the length of a string. _puts - prints out string
+ * @s: string to check length
+ *
+ * Return: length
+ */
 int _strlen(char *s)
 {
 	int length;
