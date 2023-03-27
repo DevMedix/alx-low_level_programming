@@ -23,7 +23,6 @@ void rev_string(char *s)
 		begin++;
 		end--;
 	}
-	_putchar('\n');
 }
 
 /**
