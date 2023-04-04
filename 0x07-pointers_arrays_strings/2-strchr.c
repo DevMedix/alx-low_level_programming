@@ -23,9 +23,9 @@ char *_strchr(char *s, char c)
 
 	j = 0;
 
-	while ( j <= counter)
+	while (j <= counter)
 	{
-		if ((*s == c))
+		if (*s == c)
 		{
 			return (s);
 		}
