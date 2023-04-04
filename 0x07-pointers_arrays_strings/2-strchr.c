@@ -10,10 +10,27 @@
  */
 char *_strchr(char *s, char c)
 {
-	for (; *s != '\0'; s++)
+	int counter, j;
+
+	counter = 0;
+
+
+	while (s[counter] != '\0')
 	{
-		if (*s == c)
+		;
+		counter++;
+	}
+
+	j = 0;
+
+	while ( j <= counter)
+	{
+		if ((*s == c))
+		{
 			return (s);
+		}
+		s++;
+		j++;
 	}
 	return (NULL);
 }
