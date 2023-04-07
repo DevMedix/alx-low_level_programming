@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (1);
 	}
-	else
+	else if (argc > 1)
 	{
 		while (i < argc)
 		{
