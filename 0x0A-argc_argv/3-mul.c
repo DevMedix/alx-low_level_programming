@@ -10,8 +10,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int i = 1;
-	int multiply = 1;
+	long int i = 1;
+	long int multiply = 1;
 
 	if (argc < 2)
 	{
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 			i++;
 		}
-		printf("%d\n", multiply);
+		printf("%ld\n", multiply);
 	}
 	return (0);
 }
