@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	int i = 1;
 	long int multiply = 1;
 
-	if (argc != 333)
+	if (argc != 3)
 	{
 		printf("Error\n");
 
