@@ -1,7 +1,48 @@
-#include "main.h"
 #include <stdlib.h>
+#include <string.h>
 
-int _strlen(char *str);
+/**
+ * _memcpy - fills memory with a constant byte.
+ * @dest: memory area destination
+ * @src: memory area source
+ * @n: number of memory bytes to copy
+ *
+ * Return: returns the memory area destination (dest)
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	char *new_dest;
+
+	const char *new_src;
+
+	if (dest == NULL || src == NULL)
+		return (NULL);
+
+	new_dest = (char *)dest;
+
+	new_src = (const char *)src;
+
+	if (new_dest <= new_src || new_dest >= new_src + n)
+	{
+		while (n--)
+		{
+			*new_dest++ = *new_src++;
+		}
+	}
+	else
+	{
+		new_dest += n - 1;
+
+		new_src += n - 1;
+
+		while (n--)
+		{
+			*new_dest-- = *new_src--;
+		}
+	}
+
+	return (dest);
+}
 
 /**
  * str_concat - concatenates two strings.
@@ -14,49 +55,27 @@ int _strlen(char *str);
  */
 char *str_concat(char *s1, char *s2)
 {
-	char *ptr, *new_str;
-
-	unsigned int len1 = _strlen(s1);
-	unsigned int len2 = _strlen(s2);
-
-	ptr = s1;
+	unsigned int len_s1, len_s2;
+	char *ptr;
 
 	if (s1 == NULL)
 		s1 = "";
+
 	if (s2 == NULL)
 		s2 = "";
 
-	new_str = (char *)malloc((len1 + len2 + 1) * sizeof(char));
+	len_s1 = strlen(s1);
 
-	if (new_str == NULL)
+	len_s2 = strlen(s2);
+
+	ptr = malloc(len_s1 + len_s2 + 1);
+
+	if (ptr == NULL)
 		return (NULL);
 
-	ptr = new_str;
+	_memcpy(ptr, s1, len_s1);
 
-	while (*s1)
-		*ptr++ = *s1++;
-	while (*s2)
-		*ptr++ = *s2++;
+	_memcpy(ptr + len_s1, s2, len_s2 + 1);
 
-	*ptr = '\0';
-
-	return (new_str);
-}
-
-/**
- * _strlen - prints the length of a string
- * @str: string
- *
- * Return: returns the string length
- */
-int _strlen(char *str)
-{
-	int len = 0;
-
-	while (*str != '\0')
-	{
-		len++;
-		str++;
-	}
-	return (len);
+	return (ptr);
 }
