@@ -87,7 +87,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	len_s2 = _strlen(s2);
 
-	ptr = (char *)malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	ptr = malloc(len_s1 + n + 1));
 
 	if (ptr == NULL)
 		return (NULL);
@@ -95,6 +95,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	_memcpy(ptr, s1, len_s1);
 
 	_memcpy(ptr + len_s1, s2, n);
+
+	ptr[len_s1 + n] = '\0';
 
 	return (ptr);
 }
