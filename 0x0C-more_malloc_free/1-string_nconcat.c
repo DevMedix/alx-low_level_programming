@@ -99,7 +99,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	_memcpy(ptr + len_s1, s2, n);
 
-	ptr[s1_len + n] = '\0';
+	ptr[len_s1 + n] = '\0';
 
 	return (ptr);
 }
