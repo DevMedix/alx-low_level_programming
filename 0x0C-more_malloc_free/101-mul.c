@@ -1,77 +1,92 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 
 /**
- * _is_positive_digit - checks for positive digit
- * @n: integer to check
+ * _strlen -  returns the length of a string.
+ * @s: integer
  *
- * Return: the checked integer
+ * Return: returns the length
  */
-int _is_positive_digit(char *n)
+
+int _strlen(char *s)
 {
-	while (*n != '\0')
+		int length = 0;
+
+	while (*s != '\0')
 	{
-		if (!isdigit(*n))
-		{
-			return (0);
-		}
-		n++;
+		length++;
+		s++;
 	}
-	return (isdigit(*(n - 1)));
+	return (length);
 }
 
 /**
- * mul - multiplies two numbers
+ * _positive_digit - checks for digits
+ * @num: integer to check
+ *
+ * Return: returns 1
+ */
+int _positive_digit(char *num)
+{
+	int i = 0;
+	int len = _strlen(num);
+
+	for (; i < len; i++)
+	{
+		if (!isdigit(num[i]))
+		{
+			return (0);
+		}
+	}
+	return (1);
+}
+
+/**
+ * multiply - multiplies two numbers
  * @a: first number
  * @b: second number
  *
  * Return: return the result of the multiplication
  */
-int mul(int a, int b)
+
+int multiply(char *a, char *b)
 {
-	int multiply;
-	/*
-	*for (; i < b; i++)
-	*{
-	*	multiply += a;
-	*}
-	*/
-	multiply = a * b;
-	return (multiply);
+	return (atoi(a) * atoi(b));
 }
 
 /**
  * main - entry point
  * @argc: argument count
- * @argv: argument values
+ * @argv: argument vector
  *
- * Return: result
+ * Return: returns 0
  */
 int main(int argc, char *argv[])
 {
-	char *num1 = argv[1];
-	char *num2 = argv[2];
-	int res;
+	int result;
+	char *num1, *num2;
 
 	if (argc != 3)
 	{
 		printf("Error\n");
-		exit(98);
+		return (98);
 	}
-	else
+
+	num1 = argv[1];
+	num2 = argv[2];
+
+	if (!_positive_digit(num1) || !_positive_digit(num2))
 	{
-		if (!_is_positive_digit(num1) || !_is_positive_digit(num2))
-		{
-			printf("Error\n");
-			exit(98);
-		}
-		else
-		{
-			res = mul(atoi(num1), atoi(num2));
-			printf("%d\n", res);
-			exit(0);
-		}
+		printf("Error\n");
+		return (98);
 	}
+
+	result = multiply(num1, num2);
+
+	printf("%d\n", result);
+
+	return (0);
 }
+
