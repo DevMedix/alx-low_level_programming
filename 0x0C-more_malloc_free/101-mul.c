@@ -4,25 +4,6 @@
 #include <ctype.h>
 
 /**
- * _strlen -  returns the length of a string.
- * @s: integer
- *
- * Return: returns the length
- */
-
-int _strlen(char *s)
-{
-		int length = 0;
-
-	while (*s != '\0')
-	{
-		length++;
-		s++;
-	}
-	return (length);
-}
-
-/**
  * _positive_digit - checks for digits
  * @num: integer to check
  *
@@ -31,7 +12,7 @@ int _strlen(char *s)
 int _positive_digit(char *num)
 {
 	int i = 0;
-	int len = _strlen(num);
+	int len = strlen(num);
 
 	for (; i < len; i++)
 	{
@@ -71,7 +52,7 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 
 	num1 = argv[1];
@@ -80,7 +61,7 @@ int main(int argc, char *argv[])
 	if (!_positive_digit(num1) || !_positive_digit(num2))
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 
 	result = multiply(num1, num2);
