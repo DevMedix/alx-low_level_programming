@@ -2,7 +2,7 @@
 
 /**
  * _sqrt - helper function
- * @num: number
+ * @n: number
  * @sqr: starting number
  *
  * Return: returns the square root
