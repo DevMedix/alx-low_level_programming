@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 			_putchar(result[i] + '0');
 	}
 	if (!a)
-		printf("0");
+		_putchar('0');
 	_putchar(10);
 	free(result);
 	return (0);
