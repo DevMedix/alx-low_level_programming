@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	str = (char *)main;
 
 	for (i = 0; i < byte_number; i++)
-		printf("%02x", str[i]);
+		printf("%02hhx", str[i]);
 
 	printf("\n");
 
