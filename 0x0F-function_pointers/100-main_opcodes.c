@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
 	byte_number = atoi(argv[1]);
 
-	if (byte_number < 0)
+	if (byte_number <= 0)
 	{
 		printf("Error\n");
 		exit(2);
