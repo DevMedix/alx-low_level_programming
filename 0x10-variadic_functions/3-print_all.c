@@ -51,7 +51,7 @@ void print_string(char *val, int *count)
 {
 	if (val == NULL)
 		printf("(nil)");
-	else if (val != NULL)
+	if (val != NULL)
 		printf("%s", val);
 	(*count)++;
 }
