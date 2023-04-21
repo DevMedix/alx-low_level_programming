@@ -1,6 +1,62 @@
 #include "variadic_functions.h"
 
 /**
+ * print_int - prints a char format.
+ * @val: format type
+ * @count: count variable
+ *
+ * Return: void
+ */
+
+void print_int(int val, int *count)
+{
+	printf("%d", val);
+	(*count)++;
+}
+
+/**
+ * print_char - prints a char format
+ * @val: format type
+ * @count: count variable
+ *
+ * Return: void
+ */
+void print_char(char val, int *count)
+{
+	printf("%c", val);
+	(*count)++;
+}
+
+/**
+ * print_float - prints a float format
+ * @val: format type
+ * @count: count variable
+ *
+ * Return: void
+ */
+void print_float(float val, int *count)
+{
+	printf("%f", val);
+	(*count)++;
+}
+
+/**
+  * print_string - prints a string format
+  * @val: format type
+  * @count: count variable
+  *
+  * Return: void
+  */
+void print_string(char *val, int *count)
+{
+	if (val == NULL)
+		printf("(nil)");
+	else if (val != NULL)
+		printf("%s", val);
+	(*count)++;
+}
+
+/**
  * print_all - prints anything.
  * @format: a list of types of arguments passed to the function
  *
@@ -8,9 +64,7 @@
  */
 void print_all(const char * const format, ...)
 {
-	int i, count;
-	char *s, c;
-	float f;
+	int count = 0;
 	const char *fmt = format;
 	va_list valist;
 
@@ -18,32 +72,27 @@ void print_all(const char * const format, ...)
 
 	while (*fmt != '\0')
 	{
-		if (*fmt == 'i')
+		switch (*fmt++)
 		{
-			i = va_arg(valist, int);
-			printf("%d", i);
+			case 'i':
+				print_int(va_arg(valist, int), &count);
+				break;
+			case 'c':
+				print_char(va_arg(valist, int), &count);
+				break;
+			case'f':
+				print_float(va_arg(valist, double), &count);
+				break;
+			case 's':
+				print_string(va_arg(valist, char *), &count);
+				break;
+			default:
+				continue;
 		}
-		else if (*fmt == 'c')
-		{
-			c = va_arg(valist, int);
-			printf("%c", c);
-		}
-		else if (*fmt == 'f')
-		{
-			f = va_arg(valist, double);
-			printf("%f", f);
-		}
-		else if (*fmt == 's')
-		{
-			s = va_arg(valist, char *);
-			if (s == NULL)
-				printf("(nil)");
-			else if (s != NULL)
-				printf("%s", s);
-		}
-		if (*(++fmt) && count++)
+		if (*fmt != '\0' && count > 0)
 		{
 			printf(", ");
+			count = 0;
 		}
 	}
 	printf("\n");
