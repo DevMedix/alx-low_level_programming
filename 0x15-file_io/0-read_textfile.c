@@ -22,10 +22,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (filename == NULL)
 		return (0);
 
-	*file = fopen(filename, "r");
+	file = fopen(filename, "r");
 	if (file == NULL)
 		return (0);
-	*buff = (char *)malloc((letters + 1) * sizeof(char));
+	buff = (char *)malloc((letters + 1) * sizeof(char));
 	if (buff == NULL)
 	{
 		fclose(file);
