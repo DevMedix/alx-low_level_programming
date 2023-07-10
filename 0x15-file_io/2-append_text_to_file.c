@@ -10,7 +10,9 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	FILE *file;
+	int file;
+	ssize_t content_len = 0;
+	ssize_t bytes_written;
 
 	if (filename == NULL)
 		return (-1);
@@ -18,12 +20,17 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (text_content == NULL)
 		return (1);
 
-	*file = fopen(filename, "a");
-	if (file == NULL)
+	file = open(filename, O_WRONLY | O_APPEND);
+	if (file == -1)
 		return (-1);
 
-	fprintf(file, "%s", text_content);
-	fclose(file);
+	while (text_content[content_len] != '\0')
+		content_len++;
 
+	bytes_written = write(file, text_content, content_len);
+	close(file);
+
+	if (bytes_written == -1 || bytes_written != content_len)
+		return (-1);
 	return (1);
 }
