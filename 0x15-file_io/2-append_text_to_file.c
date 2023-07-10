@@ -11,7 +11,8 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	int file;
-	int count;
+	size_t length;
+	ssize_t write_to;
 
 	if (filename == NULL)
 		return (-1);
@@ -23,10 +24,11 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (file == -1)
 		return (-1);
 
-	count = dprintf(file, "%s", text_content);
+	length = strlen(text_content);
+	write_to = write(file, text_content, length);
 	close(file);
 
-	if (count < 0)
+	if (write_to < 0)
 		return (-1);
 
 	return (1);
