@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	char buffer[1024];
 	int fd_from, fd_to, n;
 
-	if (argc < 2)
+	if (argc <= 2)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
