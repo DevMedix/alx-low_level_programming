@@ -1,5 +1,6 @@
 #include "main.h"
 
+int _strlen(char *s);
 /**
  * create_file - Creates a file with the specified name and
  * writes the provided text content to it.
@@ -15,8 +16,8 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	size_t length;
-	ssize_t written;
+	size_t len;
+	ssize_t bytes;
 	int file;
 
 	if (filename == NULL)
@@ -28,10 +29,10 @@ int create_file(const char *filename, char *text_content)
 
 	if (text_content != NULL)
 	{
-		length = strlen(text_content);
+		len = _strlen(text_content);
 
-		written = write(file, text_content, length);
-		if (written == -1 || (size_t)written != length)
+		bytes = write(file, text_content, len);
+		if (bytes == -1 || (size_t)bytes != len)
 		{
 			close(file);
 			return (-1);
@@ -41,4 +42,23 @@ int create_file(const char *filename, char *text_content)
 	close(file);
 
 	return (1);
+}
+
+
+/**
+ * _strlen -  returns the length of a string.
+ * @s: integer
+ *
+ * Return: returns the length
+ */
+int _strlen(char *s)
+{
+	int length = 0;
+
+	while (*s != '\0')
+	{
+		length++;
+		s++;
+	}
+	return (length);
 }
