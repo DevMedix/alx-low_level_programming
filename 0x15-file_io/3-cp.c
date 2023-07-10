@@ -17,9 +17,10 @@ void close_fd_from_to(int fd);
 int main(int argc, char *argv[])
 {
 	char buffer[1024];
-	int fd_from, fd_to, n;
+	int fd_from, fd_to;
+	ssize_t n, write_to;
 
-	if (argc <= 2)
+	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
@@ -34,11 +35,13 @@ int main(int argc, char *argv[])
 	if (fd_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+		close_fd_from_to(fd_from);
 		exit(99);
 	}
-	while ((n = read(fd_from, buffer, 1024)) > 0)
+	while ((n = read(fd_from, buffer, sizeof(buffer))) > 0)
 	{
-		if (write(fd_to, buffer, n) == -1)
+		write_to = write(fd_to, buffer, n);
+		if (write_to == -1 || write_to != n)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
 			close_fd_from_to(fd_from);
