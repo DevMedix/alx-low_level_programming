@@ -38,21 +38,23 @@ int main(int argc, char *argv[])
 	}
 	while ((n = read(fd_from, buffer, 1024)) > 0)
 	{
-		write(fd_to, buffer, n);
+		if (write(fd_to, buffer, n) == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]);
+			close_fd_from_to(fd_from);
+			close_fd_from_to(fd_to);
+			exit(99);
+		}
 	}
 	if (n == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		close_fd_from_to(fd_from);
+		close_fd_from_to(fd_to);
 		exit(98);
 	}
-	if (close(fd_from) == -1)
-	{
-		close_fd_from_to(fd_from);
-	}
-	if (close(fd_to) == -1)
-	{
-		close_fd_from_to(fd_to);
-	}
+	close_fd_from_to(fd_from);
+	close_fd_from_to(fd_to);
 	return (0);
 }
 
@@ -64,6 +66,9 @@ int main(int argc, char *argv[])
  */
 void close_fd_from_to(int fd)
 {
-		dprintf(2, "Error: Can't close fd %d\n", fd);
+	if (close(fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
+	}
 }
